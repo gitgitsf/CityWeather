@@ -1,0 +1,51 @@
+package com.sunmonkeyapps.cityweather.ui;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputLayout;
+import com.sunmonkeyapps.cityweather.R;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity";
+    public static final String CITY_NAME = "city_name";
+
+    private TextInputLayout tvCityName;
+
+    private String mCityName;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        tvCityName =  findViewById(R.id.tvCityName);
+    }
+
+    public void retrieveCityWeather(View view) {
+
+        if (isCityNameEntered()) {
+            Intent intent = new Intent(this, RetrieveWeatherActivity.class);
+            intent.putExtra(CITY_NAME, mCityName);
+            startActivity(intent);
+
+        }
+
+    }
+    private boolean isCityNameEntered() {
+
+        mCityName = tvCityName.getEditText().getText().toString().trim();
+
+        if (mCityName.isEmpty()) {
+            tvCityName.setError("Please Enter a city name");
+            return false;
+        } else {
+            tvCityName.setError(null);
+            return true;
+        }
+    }
+}

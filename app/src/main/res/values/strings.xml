@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">City Weather</string>
+    <string name="title_activity_retrieve_weather">RetrieveWeatherActivity</string>
+    <string name="text_no_data_returned">No Weather dat for entered city name</string>
+</resources>
