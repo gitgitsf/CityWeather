@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:errorEnabled="true"
-        android:id="@+id/tvCityName">
+        android:id="@+id/layoutCityName">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvCityName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter city name"

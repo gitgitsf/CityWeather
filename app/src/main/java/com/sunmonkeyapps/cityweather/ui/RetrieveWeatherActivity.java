@@ -36,7 +36,7 @@ public class RetrieveWeatherActivity extends AppCompatActivity {
     private String mCityName;
     private String mErrorMessage;
 
-    private boolean isLoading=false;
+    private boolean isLoading=true;
     private boolean isDataFromApi=true;
      RecyclerView rvWeather;
      ProgressBar rvProgressBar;
@@ -73,6 +73,8 @@ public class RetrieveWeatherActivity extends AppCompatActivity {
 
         Retrofit retrofit = createRetrofitObject();
         final WeatherApi weatherApi = retrofit.create(WeatherApi.class);
+
+        isLoading=true;
         setVisibility();
 
         Call<WeatherResponse> call = weatherApi.getWeatherForCity(mCityName, AppConstants.MODE, AppConstants.UNITS, AppConstants.appid);
@@ -91,7 +93,7 @@ public class RetrieveWeatherActivity extends AppCompatActivity {
                     Log.d(TAG, "onResponse: " + resp.getCod());
 
                     if (resp.getCod().equals(AppConstants.HTTP_CODE_GOOD)) {
-                        Log.e(TAG, "onResponse: " + resp.getList());
+                        Log.d(TAG, "onResponse: " + resp.getList());
 
                         mWeatherList.addAll(resp.getList());
 
