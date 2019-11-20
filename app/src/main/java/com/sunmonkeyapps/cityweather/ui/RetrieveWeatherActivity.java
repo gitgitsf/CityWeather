@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -51,9 +52,16 @@ public class RetrieveWeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_retrieve_weather);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         setupView();
         retrieveCityNameFromBundle();
+
+        // change the default android:label to a meaning title
+        String title = "Weather for " + mCityName;
+        actionBar.setTitle(title);
+
 
         getWeatherFromApi();
 
